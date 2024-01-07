@@ -99,8 +99,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                 .align(alignment = Alignment.TopStart)
                 .offset(x = (-200).dp,
                     y = 0.dp)
-                .requiredWidth(width = 387.dp)
-                .requiredHeight(height = 35.dp)
+
         ) {
             Box(
                 modifier = Modifier
@@ -256,7 +255,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
         Box(
             modifier = Modifier
                 .align(alignment = Alignment.TopStart)
-                .offset(x = 15.dp,
+                .offset(x = 40.dp,
                     y = 555.dp)
                 .requiredWidth(width = 398.dp)
                 .requiredHeight(height = 128.dp)
@@ -293,8 +292,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                             .offset(x = 11.dp,
                                 y = 31.dp)
                             .requiredWidth(width = 37.dp)
-                            .requiredHeight(height = 30.dp)
-                            .rotate(degrees = -180f))
+                            .requiredHeight(height = 30.dp))
                     Text(
                         text = "10 AM",
                         color = Color(0xffdedddd),
@@ -372,7 +370,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                             text = "23",
                             color = Color(0xffdedddd),
                             fontSize = 12.sp,
-                            lineHeight = 1.5.em // Adjust the value as needed
+                            lineHeight = 1.5.em
                         )
 
                         Box(
@@ -902,7 +900,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
         Box(
             modifier = Modifier
                 .align(alignment = Alignment.TopStart)
-                .offset(x = 69.dp,
+                .offset(x = 40.dp,
                     y = 430.dp)
                 .requiredWidth(width = 294.dp)
                 .requiredHeight(height = 95.dp)
@@ -924,9 +922,10 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                         y = 13.dp)
                     .requiredWidth(width = 78.dp)
                     .requiredHeight(height = 68.dp)
+
             ) {
                 Image(
-                    painter = painterResource(id = R.drawable.insurance1),
+                    painter = painterResource(id = R.drawable.insurance3),
                     contentDescription = "insurance 1",
                     modifier = Modifier
                         .align(alignment = Alignment.TopStart)
@@ -963,7 +962,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                     .requiredHeight(height = 68.dp)
             ) {
                 Image(
-                    painter = painterResource(id = R.drawable.insurance1),
+                    painter = painterResource(id = R.drawable.insurance2),
                     contentDescription = "insurance 1",
                     modifier = Modifier
                         .align(alignment = Alignment.TopStart)
@@ -1034,8 +1033,8 @@ fun HomeScreen(modifier: Modifier = Modifier) {
             contentDescription = "rainy-weather-4034172-3337336@0 1",
             modifier = Modifier
                 .align(alignment = Alignment.TopStart)
-                .offset(x = 90.dp,
-                    y = 613.dp)
+                .offset(x = (-60).dp,
+                    y = 571.dp)
                 .requiredSize(size = 44.dp))
         Box(
             modifier = Modifier
