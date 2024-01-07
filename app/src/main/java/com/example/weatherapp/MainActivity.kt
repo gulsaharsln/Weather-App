@@ -42,6 +42,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.tooling.preview.PreviewParameter
 
 
@@ -89,9 +90,10 @@ fun HomeScreen(modifier: Modifier = Modifier) {
             modifier = Modifier
                 .align(alignment = Alignment.Center)
                 .offset(x = (0).dp,
-                    y = (-150).dp)
+                    y = (0).dp)
                 .requiredWidth(width = 493.dp)
-                .requiredHeight(height = 1031.dp))
+                .requiredHeight(height = 1000.dp)
+                .graphicsLayer(alpha = 0.5f))
 
 
         Box(
