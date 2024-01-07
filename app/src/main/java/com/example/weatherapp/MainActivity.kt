@@ -895,7 +895,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                 colorFilter = ColorFilter.tint(Color(0xffdedddd)),
                 modifier = Modifier
                     .align(alignment = Alignment.TopStart)
-                    .offset(x = 367.dp,
+                    .offset(x = 430.dp,
                         y = 0.dp)
                     .requiredSize(size = 20.dp))
         }
