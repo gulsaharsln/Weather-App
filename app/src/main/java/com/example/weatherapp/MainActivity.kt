@@ -96,108 +96,21 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                 .graphicsLayer(alpha = 0.5f))
 
 
-        Box(
-            modifier = Modifier
-                .align(alignment = Alignment.TopStart)
-                .offset(x = (-200).dp,
-                    y = 0.dp)
 
-        ) {
-            Box(
-                modifier = Modifier
-                    .requiredSize(size = 35.dp)
-            ) {
-                Box(
-                    modifier = Modifier
-                        .requiredSize(size = 35.dp)
-                        .clip(shape = RoundedCornerShape(5.dp))
-                        .background(color = Color.White.copy(alpha = 0.3f)))
-                Box(
-                    modifier = Modifier
-                        .align(alignment = Alignment.TopStart)
-                        .offset(x = 9.72222900390625.dp,
-                            y = 9.722244262695312.dp)
-                        .requiredSize(size = 16.dp)
-                ) {
-                    Box(
-                        modifier = Modifier
-                            .requiredSize(size = 6.dp)
-                            .clip(shape = RoundedCornerShape(1.dp))
-                            .background(color = Color.White))
-                    Box(
-                        modifier = Modifier
-                            .align(alignment = Alignment.TopStart)
-                            .offset(x = 0.dp,
-                                y = 9.722213745117188.dp)
-                            .requiredSize(size = 6.dp)
-                            .clip(shape = RoundedCornerShape(1.dp))
-                            .background(color = Color.White))
-                    Box(
-                        modifier = Modifier
-                            .align(alignment = Alignment.TopStart)
-                            .offset(x = 9.722213745117188.dp,
-                                y = 0.dp)
-                            .requiredSize(size = 6.dp)
-                            .clip(shape = RoundedCornerShape(1.dp))
-                            .background(color = Color.White))
-                    Box(
-                        modifier = Modifier
-                            .align(alignment = Alignment.TopStart)
-                            .offset(x = 9.722198486328125.dp,
-                                y = 9.722213745117188.dp)
-                            .requiredSize(size = 6.dp)
-                            .clip(shape = RoundedCornerShape(1.dp))
-                            .background(color = Color.White))
-                }
-            }
-            Box(
-                modifier = Modifier
-                    .align(alignment = Alignment.TopStart)
-                    .offset(x = 352.dp,
-                        y = 0.dp)
-                    .requiredSize(size = 35.dp)
-            ) {
-                Box(
-                    modifier = Modifier
-                        .requiredSize(size = 35.dp)
-                        .clip(shape = RoundedCornerShape(5.dp))
-                        .background(color = Color.White.copy(alpha = 0.3f))
-                ) {
-                    Image(
-                        painter = painterResource(id = R.drawable.refresh),
-                        contentDescription = "refresh",
-                        colorFilter = ColorFilter.tint(Color.White),
-                        modifier = Modifier
-                            .align(alignment = Alignment.TopStart)
-                            .offset(x = 5.8333282470703125.dp, y = 5.833320617675781.dp)
-                            .requiredSize(size = 23.dp)
-                    )
-
-                    Text(
-                        text = "Surat",
-                        color = Color.White,
-                        fontSize = 14.sp,
-                        lineHeight = 20.sp,
-                        modifier = Modifier
-                            .align(alignment = Alignment.TopStart)
-                            .offset(x = 177.dp, y = 10.dp)
-                    )
-
-                }
 
                 Box(
             modifier = Modifier
                 .align(alignment = Alignment.TopStart)
                 .offset(x = 120.dp,
-                    y = 106.dp)
+                    y = 96.dp)
                 .requiredWidth(width = 176.dp)
                 .requiredHeight(height = 305.dp)
         ) {
             Box(
                 modifier = Modifier
                     .align(alignment = Alignment.TopStart)
-                    .offset(x = (-20).dp,
-                        y = 220.dp)
+                    .offset(x = (50).dp,
+                        y = 150.dp)
                     .requiredWidth(width = 109.dp)
                     .requiredHeight(height = 80.dp)
             ) {
@@ -225,8 +138,8 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .align(alignment = Alignment.TopStart)
-                    .offset(x = (-70).dp,
-                        y = 100.dp)
+                    .offset(x = (5).dp,
+                        y = 20.dp)
                     .requiredWidth(width = 172.dp)
                     .requiredHeight(height = 139.dp)
                     )
@@ -238,7 +151,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                         lineHeight = 1.42.em,
                         modifier = Modifier
                             .align(alignment = Alignment.TopStart)
-                            .offset(x = 47.dp, y = 0.dp)
+                            .offset(x = 50.dp, y = 0.dp)
                     )
 
 
@@ -250,15 +163,15 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                         lineHeight = 1.42.em,
                         modifier = Modifier
                             .align(alignment = Alignment.TopStart)
-                            .offset(x = (-60).dp, y = 320.dp)
+                            .offset(x = (12).dp, y = 250.dp)
                     )
 
                 }
         Box(
             modifier = Modifier
                 .align(alignment = Alignment.TopStart)
-                .offset(x = 40.dp,
-                    y = 555.dp)
+                .offset(x = 10.dp,
+                    y = 525.dp)
                 .requiredWidth(width = 398.dp)
                 .requiredHeight(height = 128.dp)
         ) {
@@ -645,7 +558,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                 lineHeight = 1.5.em,
                 modifier = Modifier
                     .align(alignment = Alignment.TopStart)
-                    .offset(x = 5.dp, y = 0.dp)
+                    .offset(x = 8.dp, y = 0.dp)
             )
 
 
@@ -663,8 +576,8 @@ fun HomeScreen(modifier: Modifier = Modifier) {
         Box(
             modifier = Modifier
                 .align(alignment = Alignment.TopStart)
-                .offset(x = 15.dp,
-                    y = 713.dp)
+                .offset(x = 50.dp,
+                    y = 680.dp)
                 .requiredWidth(width = 488.dp)
                 .requiredHeight(height = 78.dp)
         ) {
@@ -675,7 +588,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                 lineHeight = 1.5.em,
                 modifier = Modifier
                     .align(alignment = Alignment.TopStart)
-                    .offset(x = 0.dp, y = 0.0479736328125.dp)
+                    .offset(x = 3.dp, y = 0.0479736328125.dp)
             )
 
             Box(
@@ -697,13 +610,13 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                             start = Offset(78f, 0f),
                             end = Offset(78f, 50f))))
                 Image(
-                    painter = painterResource(id = R.drawable.cloudyweather331175827548921),
-                    contentDescription = "cloudy-weather-3311758-2754892 3",
+                    painter = painterResource(id = R.drawable.sunny),
+                    contentDescription = "sunny",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
                         .align(alignment = Alignment.TopStart)
                         .offset(x = 10.dp,
-                            y = 10.dp)
+                            y = 8.dp)
                         .requiredWidth(width = 37.dp)
                         .requiredHeight(height = 30.dp)
                         .rotate(degrees = -180f))
@@ -769,8 +682,8 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                             start = Offset(78f, 0f),
                             end = Offset(78f, 50f))))
                 Image(
-                    painter = painterResource(id = R.drawable.rainyweather4034172333733602),
-                    contentDescription = "rainy-weather-4034172-3337336@0 3",
+                    painter = painterResource(id = R.drawable.snow),
+                    contentDescription = "snow",
                     modifier = Modifier
                         .align(alignment = Alignment.TopStart)
                         .offset(x = 10.dp,
@@ -895,15 +808,15 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                 colorFilter = ColorFilter.tint(Color(0xffdedddd)),
                 modifier = Modifier
                     .align(alignment = Alignment.TopStart)
-                    .offset(x = 430.dp,
+                    .offset(x = 350.dp,
                         y = 0.dp)
                     .requiredSize(size = 20.dp))
         }
         Box(
             modifier = Modifier
                 .align(alignment = Alignment.TopStart)
-                .offset(x = 40.dp,
-                    y = 430.dp)
+                .offset(x = 60.dp,
+                    y = 400.dp)
                 .requiredWidth(width = 294.dp)
                 .requiredHeight(height = 95.dp)
         ) {
@@ -1035,14 +948,14 @@ fun HomeScreen(modifier: Modifier = Modifier) {
             contentDescription = "rainy-weather-4034172-3337336@0 1",
             modifier = Modifier
                 .align(alignment = Alignment.TopStart)
-                .offset(x = (-60).dp,
-                    y = 571.dp)
-                .requiredSize(size = 44.dp))
+                .offset(x = (87).dp,
+                    y = 585.dp)
+                .requiredSize(size = 40.dp))
         Box(
             modifier = Modifier
                 .align(alignment = Alignment.TopStart)
-                .offset(x = 47.dp,
-                    y = 822.dp)
+                .offset(x = 50.dp,
+                    y = 772.dp)
                 .requiredWidth(width = 312.dp)
                 .requiredHeight(height = 50.dp)
         ) {
@@ -1091,7 +1004,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                         y = 15.dp)
                     .requiredSize(size = 24.dp))
         }
-    } } } }
+    } }
 
 
 
