@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.layout.requiredWidth
@@ -65,7 +66,7 @@ fun FeedbackScreen(modifier: Modifier = Modifier) {
             modifier = Modifier
                 .align(alignment = Alignment.TopStart)
                 .offset(x = 15.dp,
-                    y = 67.dp)
+                    y = 65.dp)
                 .requiredSize(size = 35.dp)
         ) {
             Image(
@@ -75,8 +76,9 @@ fun FeedbackScreen(modifier: Modifier = Modifier) {
                 modifier = Modifier
                     .align(alignment = Alignment.TopStart)
                     .offset(x = 6.dp,
-                        y = 5.dp)
+                        y = 25.dp)
                     .requiredSize(size = 24.dp))
+
             Box(
                 modifier = Modifier
                     .requiredSize(size = 35.dp)
@@ -84,6 +86,8 @@ fun FeedbackScreen(modifier: Modifier = Modifier) {
                 Box(
                     modifier = Modifier
                         .requiredSize(size = 35.dp)
+                        .offset(x = 0.dp,
+                            y = 20.dp)
                         .clip(shape = RoundedCornerShape(5.dp))
                         .background(color = Color.White.copy(alpha = 0.3f)))
             }
@@ -96,6 +100,7 @@ fun FeedbackScreen(modifier: Modifier = Modifier) {
             modifier = Modifier
                 .align(alignment = Alignment.TopStart)
                 .offset(x = 164.dp, y = 78.dp)
+                .padding(top = 16.dp)
         )
         Text(
             text = "Your feedback can help everyone see more \naccurate weather conditions!",
@@ -105,6 +110,7 @@ fun FeedbackScreen(modifier: Modifier = Modifier) {
             modifier = Modifier
                 .align(alignment = Alignment.TopStart)
                 .offset(x = 15.dp, y = 116.dp)
+                .padding(top = 16.dp)
         )
 
         Box(
