@@ -37,7 +37,7 @@ object RetrofitInstance {
     }
 }
 
-suspend fun fetchWeatherData(location: String = "London,uk"): WeatherResponse {
+suspend fun fetchWeatherData(location: String = "Istanbul,tr"): WeatherResponse {
     return try {
         val response = withContext(Dispatchers.IO) {
             RetrofitInstance.weatherApiService.getWeatherData(location)
