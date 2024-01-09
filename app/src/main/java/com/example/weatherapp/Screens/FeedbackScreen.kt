@@ -1,4 +1,4 @@
-package com.example.weatherapp
+package com.example.weatherapp.Screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -26,7 +26,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.ui.graphics.graphicsLayer
-
+import com.example.weatherapp.R
 
 
 @Composable

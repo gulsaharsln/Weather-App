@@ -95,4 +95,5 @@ dependencies {
     implementation ("androidx.navigation:navigation-compose:2.4.0-beta01")
 
     implementation ("androidx.compose.material:material:1.2.0")
+    implementation ("com.google.code.gson:gson:2.8.8")
 }

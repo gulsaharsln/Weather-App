@@ -11,7 +11,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.weatherapp.ui.theme.WeatherAppTheme
 import androidx.navigation.compose.rememberNavController
-import com.example.weatherapp.HomeScreen
+import com.example.weatherapp.Screens.HomeScreen
+import com.example.weatherapp.Screens.CustomBottomNavigationBar
+import com.example.weatherapp.Screens.DetailsScreen
+import com.example.weatherapp.Screens.FeedbackScreen
+import com.example.weatherapp.Screens.NavigationItem
+import com.example.weatherapp.Screens.SearchingScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

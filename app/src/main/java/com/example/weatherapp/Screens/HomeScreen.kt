@@ -1,4 +1,4 @@
-package com.example.weatherapp
+package com.example.weatherapp.Screens
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import androidx.compose.material3.Text
 import androidx.compose.ui.graphics.graphicsLayer
+import com.example.weatherapp.R
 
 
 @Composable
