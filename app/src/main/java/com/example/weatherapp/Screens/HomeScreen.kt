@@ -41,12 +41,14 @@ import java.time.format.DateTimeFormatter
 fun HomeScreen(modifier: Modifier = Modifier) {
     var weatherData by remember { mutableStateOf<WeatherResponse?>(null) }
     var weatherDataIzmir by remember { mutableStateOf<WeatherResponse?>(null)}
+    var weatherDataAnkara by remember { mutableStateOf<WeatherResponse?>(null)}
 
     LaunchedEffect(Unit) {
         try {
             // Make the API call and update the state
             weatherData = fetchWeatherData("Istanbul,tr")
             weatherDataIzmir=fetchWeatherData("Izmir,tr")
+            weatherDataAnkara=fetchWeatherData("Ankara,tr")
         } catch (e: Exception) {
             e.printStackTrace()
         }
@@ -86,8 +88,8 @@ fun HomeScreen(modifier: Modifier = Modifier) {
             modifier = Modifier
                 .align(alignment = Alignment.TopStart)
                 .offset(x = 120.dp,
-                    y = 96.dp)
-                .requiredWidth(width = 176.dp)
+                    y = 180.dp)
+                .requiredWidth(width = 196.dp)
                 .requiredHeight(height = 305.dp)
         ) {
             Box(
@@ -134,8 +136,8 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                 fontSize = 12.sp,
                 lineHeight = 1.42.em,
                 modifier = Modifier
-                    .align(alignment = Alignment.TopStart)
-                    .offset(x = 50.dp, y = 0.dp)
+                    .align(alignment = Alignment.TopCenter)
+                    .offset(x = 0.dp, y = 0.dp)
             )
 
 
@@ -149,33 +151,20 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                 fontWeight = FontWeight.Medium,
                 lineHeight = 1.42.em,
                 modifier = Modifier
-                    .align(alignment = Alignment.TopStart)
-                    .offset(x = 12.dp, y = 250.dp)
+                    .align(alignment = Alignment.TopCenter)
+                    .offset(x = 0.dp, y = 250.dp)
             )
-
-
-
-
             Text(
-                text = "Today",
+                text ="Istanbul",
                 color = Color(0xffdedddd),
                 fontSize = 12.sp,
-                lineHeight = 1.5.em,
+                fontWeight = FontWeight.Medium,
+                lineHeight = 1.42.em,
                 modifier = Modifier
-                    .align(alignment = Alignment.TopStart)
-                    .offset(x = 8.dp, y = 0.dp)
+                    .align(alignment = Alignment.TopCenter)
+                    .offset(x = 0.dp, y = 280.dp)
             )
 
-
-            Text(
-                text = "7-Day Forecasts",
-                color = Color(0xffdedddd),
-                fontSize = 12.sp,
-                lineHeight = 1.5.em,
-                modifier = Modifier
-                    .align(alignment = Alignment.TopStart)
-                    .offset(x = 292.dp, y = 0.dp)
-            )
 
         }
         Box(
@@ -199,14 +188,14 @@ fun HomeScreen(modifier: Modifier = Modifier) {
             Box(
                 modifier = Modifier
                     .align(alignment = Alignment.TopStart)
-                    .offset(x = 0.dp,
+                    .offset(x = 15.dp,
                         y = 28.0479736328125.dp)
                     .requiredWidth(width = 156.dp)
                     .requiredHeight(height = 50.dp)
             ) {
                 Box(
                     modifier = Modifier
-                        .requiredWidth(width = 156.dp)
+                        .requiredWidth(width = 190.dp)
                         .requiredHeight(height = 50.dp)
                         .clip(shape = RoundedCornerShape(10.dp))
                         .background(brush = Brush.linearGradient(
@@ -227,7 +216,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                         .rotate(degrees = -180f))
 
                 Text(
-                    text = "Delhi",
+                    text = "İzmir",
                     color = Color.White,
                     fontSize = 14.sp,
                     lineHeight = 1.07.em,
@@ -238,7 +227,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
 
 
                 Text(
-                    text = "9",
+                    text = "${weatherDataIzmir?.main?.temp?: "N/A"}°",
                     color = Color.White,
                     fontSize = 16.sp,
                     lineHeight = 0.94.em,
@@ -249,7 +238,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
 
 
                 Text(
-                    text = "Sunny",
+                    text = "${weatherDataIzmir?.weather?.getOrNull(0)?.description ?: "N/A"}",
                     color = Color(0xffdedddd),
                     fontSize = 10.sp,
                     lineHeight = 1.3.em,
@@ -258,27 +247,18 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                         .offset(x = 57.dp, y = 28.dp)
                 )
 
-                Box(
-                    modifier = Modifier
-                        .align(alignment = Alignment.TopStart)
-                        .offset(x = 140.dp,
-                            y = 18.dp)
-                        .requiredSize(size = 4.dp)
-                        .clip(shape = CircleShape)
-                        .border(border = BorderStroke(1.dp, Color.White),
-                            shape = CircleShape))
             }
             Box(
                 modifier = Modifier
                     .align(alignment = Alignment.TopStart)
-                    .offset(x = 166.dp,
+                    .offset(x = 216.dp,
                         y = 28.0479736328125.dp)
                     .requiredWidth(width = 156.dp)
                     .requiredHeight(height = 50.dp)
             ) {
                 Box(
                     modifier = Modifier
-                        .requiredWidth(width = 156.dp)
+                        .requiredWidth(width = 196.dp)
                         .requiredHeight(height = 50.dp)
                         .clip(shape = RoundedCornerShape(10.dp))
                         .background(brush = Brush.linearGradient(
@@ -291,12 +271,12 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                     contentDescription = "snow",
                     modifier = Modifier
                         .align(alignment = Alignment.TopStart)
-                        .offset(x = 10.dp,
+                        .offset(x = 0.dp,
                             y = 6.dp)
                         .requiredSize(size = 40.dp))
 
                 Text(
-                    text = "Kolkata",
+                    text = "Ankara",
                     color = Color.White,
                     fontSize = 14.sp,
                     lineHeight = 1.07.em,
@@ -307,7 +287,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
 
 
                 Text(
-                    text = "9",
+                    text = "${weatherDataAnkara?.main?.temp?: "N/A"}°",
                     color = Color.White,
                     fontSize = 16.sp,
                     lineHeight = 0.94.em,
@@ -318,7 +298,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
 
 
                 Text(
-                    text = "Snowy",
+                    text = "${weatherDataAnkara?.weather?.getOrNull(0)?.description ?: "N/A"}",
                     color = Color(0xffdedddd),
                     fontSize = 10.sp,
                     lineHeight = 1.3.em,
@@ -327,15 +307,6 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                         .offset(x = 57.dp, y = 28.dp)
                 )
 
-                Box(
-                    modifier = Modifier
-                        .align(alignment = Alignment.TopStart)
-                        .offset(x = 140.dp,
-                            y = 18.dp)
-                        .requiredSize(size = 4.dp)
-                        .clip(shape = CircleShape)
-                        .border(border = BorderStroke(1.dp, Color.White),
-                            shape = CircleShape))
             }
             Box(
                 modifier = Modifier
@@ -345,83 +316,16 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                     .requiredWidth(width = 156.dp)
                     .requiredHeight(height = 50.dp)
             ) {
-                Box(
-                    modifier = Modifier
-                        .requiredWidth(width = 156.dp)
-                        .requiredHeight(height = 50.dp)
-                        .clip(shape = RoundedCornerShape(10.dp))
-                        .background(brush = Brush.linearGradient(
-                            0f to Color(0xff957dcd),
-                            1f to Color(0xff523d7f),
-                            start = Offset(78f, 0f),
-                            end = Offset(78f, 50f))))
-                Image(
-                    painter = painterResource(id = R.drawable.rain331175327548871),
-                    contentDescription = "rain-3311753-2754887 1",
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier
-                        .align(alignment = Alignment.TopStart)
-                        .offset(x = 10.dp,
-                            y = 6.dp)
-                        .requiredSize(size = 39.dp))
-
-                Text(
-                    text = "Haydrabad",
-                    color = Color.White,
-                    fontSize = 14.sp,
-                    lineHeight = 1.07.em,
-                    modifier = Modifier
-                        .align(alignment = Alignment.TopStart)
-                        .offset(x = 57.dp, y = 8.dp)
-                )
 
 
-                Text(
-                    text = "9",
-                    color = Color.White,
-                    fontSize = 16.sp,
-                    lineHeight = 0.94.em,
-                    modifier = Modifier
-                        .align(alignment = Alignment.TopStart)
-                        .offset(x = 130.dp, y = 18.dp)
-                )
-
-
-                Text(
-                    text = "Rainy",
-                    color = Color(0xffdedddd),
-                    fontSize = 10.sp,
-                    lineHeight = 1.3.em,
-                    modifier = Modifier
-                        .align(alignment = Alignment.TopStart)
-                        .offset(x = 57.dp, y = 28.dp)
-                )
-
-                Box(
-                    modifier = Modifier
-                        .align(alignment = Alignment.TopStart)
-                        .offset(x = 140.dp,
-                            y = 18.dp)
-                        .requiredSize(size = 4.dp)
-                        .clip(shape = CircleShape)
-                        .border(border = BorderStroke(1.dp, Color.White),
-                            shape = CircleShape))
             }
-            Image(
-                painter = painterResource(id = R.drawable.plus),
-                contentDescription = "plus",
-                colorFilter = ColorFilter.tint(Color(0xffdedddd)),
-                modifier = Modifier
-                    .align(alignment = Alignment.TopStart)
-                    .offset(x = 350.dp,
-                        y = 0.dp)
-                    .requiredSize(size = 20.dp))
+
         }
         Box(
             modifier = Modifier
                 .align(alignment = Alignment.TopStart)
                 .offset(x = 60.dp,
-                    y = 400.dp)
+                    y = 550.dp)
                 .requiredWidth(width = 294.dp)
                 .requiredHeight(height = 95.dp)
         ) {
