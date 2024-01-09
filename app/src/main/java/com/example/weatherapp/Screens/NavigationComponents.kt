@@ -1,4 +1,4 @@
-package com.example.weatherapp
+package com.example.weatherapp.Screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -12,6 +12,7 @@ import androidx.navigation.NavHostController
 import androidx.compose.material.Icon
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Brush
+import com.example.weatherapp.R
 
 
 @Composable

@@ -1,4 +1,4 @@
-package com.example.weatherapp
+package com.example.weatherapp.Screens
 
 
 import androidx.compose.foundation.Image
@@ -34,6 +34,7 @@ import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Divider
 import androidx.compose.ui.draw.rotate
+import com.example.weatherapp.R
 
 
 @Composable
