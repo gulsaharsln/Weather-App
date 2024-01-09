@@ -29,9 +29,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.tooling.preview.Preview
 import com.example.weatherapp.R
 import com.example.weatherapp.WeatherResponse
 import com.example.weatherapp.fetchWeatherData
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 
 @Composable
@@ -104,7 +107,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                 Box(
                     modifier = Modifier
                         .align(alignment = Alignment.TopStart)
-                        .offset(x = 93.dp,
+                        .offset(x = 96.dp,
                             y = 0.dp)
                         .requiredSize(size = 16.dp)
                         .clip(shape = CircleShape)
@@ -124,7 +127,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
             )
 
             Text(
-                text = "Mostly Sunny",
+                text = "${weatherData?.weather?.getOrNull(0)?.description ?: "N/A"}",
                 color = Color(0xffdedddd),
                 fontSize = 12.sp,
                 lineHeight = 1.42.em,
@@ -134,15 +137,18 @@ fun HomeScreen(modifier: Modifier = Modifier) {
             )
 
 
+            val currentDateTime = LocalDateTime.now()
+            val formatter = DateTimeFormatter.ofPattern("EEEE, d MMMM yyyy | HH:mm")
+
             Text(
-                text = "Friday, 26 August 2022 | 10:00",
+                text = currentDateTime.format(formatter),
                 color = Color(0xffdedddd),
                 fontSize = 12.sp,
                 fontWeight = FontWeight.Medium,
                 lineHeight = 1.42.em,
                 modifier = Modifier
                     .align(alignment = Alignment.TopStart)
-                    .offset(x = (12).dp, y = 250.dp)
+                    .offset(x = 12.dp, y = 250.dp)
             )
 
         }
@@ -941,3 +947,8 @@ fun HomeScreen(modifier: Modifier = Modifier) {
     }
         }
     }
+@Preview(widthDp = 417, heightDp = 872)
+@Composable
+private fun HomeScreenPreview() {
+    HomeScreen(Modifier)
+}
