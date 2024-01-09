@@ -1,6 +1,7 @@
 package com.example.weatherapp
 
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -33,20 +34,92 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Divider
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.draw.rotate
+import com.google.gson.annotations.SerializedName
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.GET
+import retrofit2.http.Query
 
+
+data class WeatherResponse(
+    @SerializedName("main")
+    val main: Main,
+    @SerializedName("weather")
+    val weather: List<Weather>,
+    // Add other fields based on your API response structure
+)
+
+data class Main(
+    @SerializedName("temp")
+    val temperature: Double
+)
+
+data class Weather(
+    @SerializedName("description")
+    val description: String
+    // Add other fields based on your API response structure
+)
+
+private const val OPEN_WEATHER_MAP_API_KEY = "f3342c6292f102c7c8d905c9bf1d1f8a"
+interface WeatherApiService {
+
+    @GET("weather")
+    suspend fun getWeatherData(
+        @Query("q") location: String = "London,uk",
+        @Query("units") units: String = "metric", // Use "imperial" for Fahrenheit
+        @Query("appid") apiKey: String = OPEN_WEATHER_MAP_API_KEY
+    ): Response<WeatherResponse>
+}
+
+
+object RetrofitInstance {
+
+    private const val BASE_URL = "https://api.openweathermap.org/data/2.5/"
+
+    val retrofit: Retrofit by lazy {
+        Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
+
+    val weatherApiService: WeatherApiService by lazy {
+        retrofit.create(WeatherApiService::class.java)
+    }
+}
 
 @Composable
 fun SafeAreaBox(content: @Composable () -> Unit) {
-    Box(modifier = Modifier.padding(top = WindowInsets.statusBars.asPaddingValues().calculateTopPadding())) {
+    Box(modifier = Modifier.padding(top = 20.dp)) {
         content()
     }
 }
 
 @Composable
 fun DetailsScreen(modifier: Modifier = Modifier) {
+    var weatherData by remember { mutableStateOf<WeatherResponse?>(null) }
+
+    LaunchedEffect(Unit) {
+        try {
+            // Make the API call and update the state
+            weatherData = fetchWeatherData("London,uk")
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
 
     SafeAreaBox {
+
         Box(
             modifier = Modifier
                 .requiredWidth(417.dp)
@@ -196,11 +269,12 @@ fun DetailsScreen(modifier: Modifier = Modifier) {
                         .rotate(degrees = 109.65f)
                 )
                 Text(
-                    text = "23",
+                    text = "${weatherData?.main?.temperature ?: "N/A"}°",
                     color = Color.White,
                     fontSize = 55.sp,
                     lineHeight = 1.45.em
                 )
+
 
                 Box(
                     modifier = Modifier
@@ -746,6 +820,30 @@ fun DetailsScreen(modifier: Modifier = Modifier) {
         }
     }
 }
+suspend fun fetchWeatherData(location: String = "London,uk"): WeatherResponse {
+    return try {
+        val response = withContext(Dispatchers.IO) {
+            RetrofitInstance.weatherApiService.getWeatherData(location)
+        }
+
+        if (response.isSuccessful) {
+            // Use response.body()?.main?.temperature to get the temperature
+            response.body()?.let {
+                WeatherResponse(main = it.main, weather = it.weather)
+            } ?: WeatherResponse(Main(0.0), listOf(Weather("N/A")))
+        } else {
+            println("API call failed with code: ${response.code()}")
+            val errorBody = response.errorBody()?.string()
+            println("Error Body: $errorBody")
+            WeatherResponse(Main(0.0), listOf(Weather("N/A")))
+        }
+    } catch (e: Exception) {
+        e.printStackTrace()
+        println("Exception message: ${e.message}")
+        WeatherResponse(Main(0.0), listOf(Weather("N/A")))
+    }
+}
+
 
 @Preview(widthDp = 417, heightDp = 872)
 @Composable
