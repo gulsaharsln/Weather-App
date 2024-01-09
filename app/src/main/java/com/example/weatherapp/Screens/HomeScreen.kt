@@ -23,12 +23,33 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import androidx.compose.material3.Text
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.graphicsLayer
 import com.example.weatherapp.R
+import com.example.weatherapp.WeatherResponse
+import com.example.weatherapp.fetchWeatherData
 
 
 @Composable
 fun HomeScreen(modifier: Modifier = Modifier) {
+    var weatherData by remember { mutableStateOf<WeatherResponse?>(null) }
+
+    LaunchedEffect(Unit) {
+        try {
+            // Make the API call and update the state
+            weatherData = fetchWeatherData("London,uk")
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+
+    SafeAreaBox {
+
     Box(
         modifier = modifier
             .requiredWidth(width = 417.dp)
@@ -73,7 +94,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                     .requiredHeight(height = 80.dp)
             ) {
                 Text(
-                    text = "23",
+                    text = "${weatherData?.main?.temperature ?: "N/A"}°",
                     color = Color.White,
                     fontSize = 70.sp,
                     lineHeight = 99.sp
@@ -917,4 +938,6 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                 .requiredWidth(width = 312.dp)
                 .requiredHeight(height = 50.dp)
         )
-    } }
+    }
+        }
+    }
