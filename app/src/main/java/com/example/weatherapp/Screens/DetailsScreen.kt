@@ -213,7 +213,7 @@ fun DetailsScreen(modifier: Modifier = Modifier) {
                         .rotate(degrees = 109.65f)
                 )
                 Text(
-                    text = "${weatherData?.main?.temperature ?: "N/A"}°",
+                    text = "${weatherData?.main?.temp?: "N/A"}°",
                     color = Color.White,
                     fontSize = 55.sp,
                     lineHeight = 1.45.em

@@ -97,7 +97,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                     .requiredHeight(height = 80.dp)
             ) {
                 Text(
-                    text = "${weatherData?.main?.temperature ?: "N/A"}°",
+                    text = "${weatherData?.main?.temp?: "N/A"}°",
                     color = Color.White,
                     fontSize = 70.sp,
                     lineHeight = 99.sp
@@ -834,7 +834,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                         .requiredSize(size = 24.dp))
 
                 Text(
-                    text = "30% ",
+                    text = "${weatherData?.main?.pressure?: "N/A"}",
                     color = Color.White,
                     fontSize = 14.sp,
                     modifier = Modifier
@@ -844,7 +844,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
 
 
                 Text(
-                    text = "Precipitation",
+                    text = "Pressure",
                     color = Color(0xffdedddd),
                     fontSize = 12.sp,
                     modifier = Modifier
@@ -871,7 +871,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                         .requiredSize(size = 24.dp))
 
                 Text(
-                    text = "20% ",
+                    text = "${weatherData?.main?.humidity ?: "N/A"}%",
                     color = Color.White,
                     fontSize = 14.sp,
                     modifier = Modifier
@@ -908,7 +908,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                         .requiredSize(size = 24.dp))
 
                 Text(
-                    text = "9km/h",
+                    text = "${weatherData?.wind?.speed?: "N/A"}km/h",
                     color = Color.White,
                     fontSize = 14.sp,
                     modifier = Modifier
