@@ -39,8 +39,8 @@ import androidx.compose.material.Typography
 import androidx.compose.ui.text.font.Font
 import com.example.weatherapp.getWeatherIconResource
 import androidx.compose.ui.platform.LocalContext
-import com.example.weatherapp.ui.theme.LocationUtility
-import com.example.weatherapp.ui.theme.getCityName
+import com.example.weatherapp.LocationUtility
+import com.example.weatherapp.getCityName
 
 
 // Define the font family
