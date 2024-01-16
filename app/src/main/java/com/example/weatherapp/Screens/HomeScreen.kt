@@ -13,7 +13,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -39,6 +38,10 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.font.Font
 import com.example.weatherapp.getWeatherIconResource
+import androidx.compose.ui.platform.LocalContext
+import com.example.weatherapp.ui.theme.LocationUtility
+import com.example.weatherapp.ui.theme.getCityName
+
 
 // Define the font family
 val OpenSansFamily = FontFamily(Font(R.font.opensans_regular))
@@ -54,7 +57,7 @@ val AppTypography = Typography(
     h2 = TextStyle(
         fontFamily = OpenSansFamily,
         fontWeight = FontWeight.Bold,
-        fontSize = 30.sp
+        fontSize = 28.sp
     ),
 
     h3 = TextStyle(
@@ -93,11 +96,20 @@ fun HomeScreen(modifier: Modifier = Modifier) {
     var weatherDataIzmir by remember { mutableStateOf<WeatherResponse?>(null)}
     var weatherDataAnkara by remember { mutableStateOf<WeatherResponse?>(null)}
 
+    var locationName by remember { mutableStateOf("Loading...") }
+    val context = LocalContext.current
 
     LaunchedEffect(Unit) {
         try {
-            // Make the API call and update the state
-            weatherData = fetchWeatherData("Istanbul,tr")
+            // Fetch device location
+            val location = LocationUtility.getCurrentLocation(context)
+            if (location != null) {
+                // Use location for API call
+                val locationQuery = "${location.latitude},${location.longitude}"
+                weatherData = fetchWeatherData(locationQuery)
+                locationName = getCityName(context, location)
+            }
+
             weatherDataIzmir=fetchWeatherData("Izmir,tr")
             weatherDataAnkara=fetchWeatherData("Ankara,tr")
         } catch (e: Exception) {
@@ -171,13 +183,13 @@ fun HomeScreen(modifier: Modifier = Modifier) {
             }
 
             Text(
-                text ="Istanbul",
+                text = locationName,
                 color = Color(0xffdedddd),
                 style = AppTypography.h2,
                 lineHeight = 1.42.em,
                 modifier = Modifier
                     .align(alignment = Alignment.TopCenter)
-                    .offset(x =-10.dp, y = -50.dp)
+                    .offset(x =0.dp, y = -50.dp)
             )
 
 
