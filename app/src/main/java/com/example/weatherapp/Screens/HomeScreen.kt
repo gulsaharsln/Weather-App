@@ -56,7 +56,7 @@ val AppTypography = Typography(
     h1 = TextStyle(
         fontFamily = OpenSansFamily,
         fontWeight = FontWeight.Medium,
-        fontSize = 70.sp
+        fontSize = 50.sp
     ),
 
     h2 = TextStyle(
@@ -159,37 +159,31 @@ fun HomeScreen(modifier: Modifier = Modifier) {
 
         Box(
             modifier = Modifier
-                .align(alignment = Alignment.TopStart)
-                .offset(x = 120.dp,
+                .align(alignment = Alignment.TopCenter)
+                .offset(x = 0.dp,
                     y = 180.dp)
-                .requiredWidth(width = 196.dp)
+                .requiredWidth(width = 296.dp)
                 .requiredHeight(height = 305.dp)
         ) {
             Box(
                 modifier = Modifier
-                    .align(alignment = Alignment.TopStart)
-                    .offset(x = (50).dp,
+                    .align(alignment = Alignment.TopCenter)
+                    .offset(x = (0).dp,
                         y = 150.dp)
-                    .requiredWidth(width = 109.dp)
+                    .requiredWidth(width = 195.dp)
                     .requiredHeight(height = 80.dp)
+
             ) {
                 Text(
-                    text = "${weatherData?.main?.temp?: "N/A"}°",
+                    text = "${weatherData?.main?.temp ?: "N/A"}°",
                     color = Color.White,
                     style = AppTypography.h1,
-                    lineHeight = 99.sp
+                    lineHeight = 99.sp,
+                    modifier = Modifier
+                        .align(Alignment.Center)
                 )
 
 
-                Box(
-                    modifier = Modifier
-                        .align(alignment = Alignment.TopStart)
-                        .offset(x = 96.dp,
-                            y = 0.dp)
-                        .requiredSize(size = 16.dp)
-                        .clip(shape = CircleShape)
-                        .border(border = BorderStroke(3.dp, Color.White),
-                            shape = CircleShape))
             }
 
             Text(
@@ -278,7 +272,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                     lineHeight = 1.07.em,
                     modifier = Modifier
                         .align(alignment = Alignment.TopStart)
-                        .offset(x = 40.dp, y = 8.dp)
+                        .offset(x = 50.dp, y = 8.dp)
                 )
 
 
@@ -300,7 +294,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                     lineHeight = 1.3.em,
                     modifier = Modifier
                         .align(alignment = Alignment.TopStart)
-                        .offset(x = 40.dp, y = 28.dp)
+                        .offset(x = 50.dp, y = 28.dp)
                 )
 
             }
@@ -531,6 +525,8 @@ fun BigWeatherImage(weatherData: WeatherResponse?) {
             modifier = Modifier
                 .requiredWidth(width = 172.dp)
                 .requiredHeight(height = 139.dp)
+                .offset(x = 50.dp, y = 0.dp)
+
         )
     }
 }
@@ -544,6 +540,7 @@ fun SmallWeatherImage(weatherData: WeatherResponse?) {
             modifier = Modifier
                 .requiredSize(size = 40.dp)
                 .offset(x = 0.dp, y = 6.dp)
+
         )
     }
 }
