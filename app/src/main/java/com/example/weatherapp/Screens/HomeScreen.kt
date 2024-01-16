@@ -1,5 +1,7 @@
 package com.example.weatherapp.Screens
 
+import android.location.Location
+import androidx.activity.ComponentActivity
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -17,7 +19,6 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.em
@@ -29,31 +30,43 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.weatherapp.R
 import com.example.weatherapp.WeatherResponse
 import com.example.weatherapp.fetchWeatherData
+import getCurrentLocation
+import android.content.Context
+import androidx.core.location.LocationManagerCompat.getCurrentLocation
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import getLocationCityName
 
 
 @Composable
 fun HomeScreen(modifier: Modifier = Modifier) {
+    val context = LocalContext.current
     var weatherData by remember { mutableStateOf<WeatherResponse?>(null) }
-    var weatherDataIzmir by remember { mutableStateOf<WeatherResponse?>(null)}
-    var weatherDataAnkara by remember { mutableStateOf<WeatherResponse?>(null)}
+    var weatherDataIzmir by remember { mutableStateOf<WeatherResponse?>(null) }
+    var weatherDataAnkara by remember { mutableStateOf<WeatherResponse?>(null) }
 
-    LaunchedEffect(Unit) {
+    // Add a variable to hold the current location
+    var currentLocation by remember { mutableStateOf<Location?>(null) }
+
+    // LaunchedEffect to fetch weather data when the component is launched
+    LaunchedEffect(context) {
         try {
-            // Make the API call and update the state
-            weatherData = fetchWeatherData("Istanbul,tr")
-            weatherDataIzmir=fetchWeatherData("Izmir,tr")
-            weatherDataAnkara=fetchWeatherData("Ankara,tr")
+            currentLocation = getCurrentLocation(activity = context as ComponentActivity)
+
+            currentLocation?.let { location ->
+                weatherData = fetchWeatherData("${location.latitude},${location.longitude}")
+                weatherDataIzmir = fetchWeatherData("Izmir,tr")
+                weatherDataAnkara = fetchWeatherData("Ankara,tr")
+            }
         } catch (e: Exception) {
             e.printStackTrace()
         }
     }
-
 
     SafeAreaBox {
 
@@ -155,7 +168,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                     .offset(x = 0.dp, y = 250.dp)
             )
             Text(
-                text ="Istanbul",
+                text = "${currentLocation?.let { getLocationCityName(context, it) } ?: "N/A"}",
                 color = Color(0xffdedddd),
                 fontSize = 12.sp,
                 fontWeight = FontWeight.Medium,
@@ -368,7 +381,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
 
 
                 Text(
-                    text = "Pressure",
+                    text = "Precipitation",
                     color = Color(0xffdedddd),
                     fontSize = 12.sp,
                     modifier = Modifier
@@ -459,5 +472,6 @@ fun HomeScreen(modifier: Modifier = Modifier) {
 @Preview(widthDp = 417, heightDp = 872)
 @Composable
 private fun HomeScreenPreview() {
+    val context = LocalContext.current
     HomeScreen(Modifier)
 }
