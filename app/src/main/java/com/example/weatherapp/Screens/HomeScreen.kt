@@ -17,7 +17,6 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.em
@@ -460,4 +459,11 @@ fun HomeScreen(modifier: Modifier = Modifier) {
 @Composable
 private fun HomeScreenPreview() {
     HomeScreen(Modifier)
+}
+
+@Composable
+fun SafeAreaBox(content: @Composable () -> Unit) {
+    Box(modifier = Modifier.padding(top = 20.dp)) {
+        content()
+    }
 }
