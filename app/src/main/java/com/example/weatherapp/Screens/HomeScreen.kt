@@ -38,7 +38,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.unit.sp
+import com.example.weatherapp.getWeatherIconResource
 
 // Define the font family
 val OpenSansFamily = FontFamily(Font(R.font.opensans_regular))
@@ -92,6 +92,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
     var weatherData by remember { mutableStateOf<WeatherResponse?>(null) }
     var weatherDataIzmir by remember { mutableStateOf<WeatherResponse?>(null)}
     var weatherDataAnkara by remember { mutableStateOf<WeatherResponse?>(null)}
+
 
     LaunchedEffect(Unit) {
         try {
@@ -176,21 +177,11 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                 lineHeight = 1.42.em,
                 modifier = Modifier
                     .align(alignment = Alignment.TopCenter)
-                    .offset(x = 0.dp, y = -50.dp)
+                    .offset(x =-10.dp, y = -50.dp)
             )
 
 
-            Image(
-                painter = painterResource(id = R.drawable.cloudyweather331175827548921),
-                contentDescription = "cloudy-weather-3311758-2754892 1",
-                contentScale = ContentScale.Crop,
-                modifier = Modifier
-                    .align(alignment = Alignment.TopStart)
-                    .offset(x = (5).dp,
-                        y = 20.dp)
-                    .requiredWidth(width = 172.dp)
-                    .requiredHeight(height = 139.dp)
-            )
+            BigWeatherImage(weatherData = weatherData)
 
 
             val currentDateTime = LocalDateTime.now()
@@ -255,17 +246,8 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                             1f to Color(0xff523d7f),
                             start = Offset(78f, 0f),
                             end = Offset(78f, 50f))))
-                Image(
-                    painter = painterResource(id = R.drawable.sunny),
-                    contentDescription = "sunny",
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier
-                        .align(alignment = Alignment.TopStart)
-                        .offset(x = -10.dp,
-                            y = 8.dp)
-                        .requiredWidth(width = 37.dp)
-                        .requiredHeight(height = 30.dp)
-                        .rotate(degrees = -180f))
+
+                SmallWeatherImage(weatherData = weatherDataIzmir)
 
                 Text(
                     text = "İzmir",
@@ -318,14 +300,9 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                             1f to Color(0xff523d7f),
                             start = Offset(78f, 0f),
                             end = Offset(78f, 50f))))
-                Image(
-                    painter = painterResource(id = R.drawable.snow),
-                    contentDescription = "snow",
-                    modifier = Modifier
-                        .align(alignment = Alignment.TopStart)
-                        .offset(x = 0.dp,
-                            y = 6.dp)
-                        .requiredSize(size = 40.dp))
+
+
+                SmallWeatherImage(weatherData = weatherDataAnkara)
 
                 Text(
                     text = "Ankara",
@@ -518,5 +495,33 @@ private fun HomeScreenPreview() {
 fun SafeAreaBox(content: @Composable () -> Unit) {
     Box(modifier = Modifier.padding(top = 20.dp)) {
         content()
+    }
+}
+
+@Composable
+fun BigWeatherImage(weatherData: WeatherResponse?) {
+    weatherData?.weather?.getOrNull(0)?.description?.let { description ->
+        val imageRes = getWeatherIconResource(description)
+        Image(
+            painter = painterResource(id = imageRes),
+            contentDescription = description,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier
+                .requiredWidth(width = 172.dp)
+                .requiredHeight(height = 139.dp)
+        )
+    }
+}
+@Composable
+fun SmallWeatherImage(weatherData: WeatherResponse?) {
+    weatherData?.weather?.getOrNull(0)?.description?.let { description ->
+        val imageRes = getWeatherIconResource(description)
+        Image(
+            painter = painterResource(id = imageRes),
+            contentDescription = description,
+            modifier = Modifier
+                .requiredSize(size = 40.dp)
+                .offset(x = 0.dp, y = 6.dp)
+        )
     }
 }
