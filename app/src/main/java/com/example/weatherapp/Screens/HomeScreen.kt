@@ -1,5 +1,8 @@
 package com.example.weatherapp.Screens
 
+import android.content.Context
+import android.location.Geocoder
+import android.location.Location
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -40,7 +43,11 @@ import androidx.compose.ui.text.font.Font
 import com.example.weatherapp.getWeatherIconResource
 import androidx.compose.ui.platform.LocalContext
 import com.example.weatherapp.ui.theme.LocationUtility
-import com.example.weatherapp.ui.theme.getCityName
+import com.example.weatherapp.ui.theme.LocationUtility.getCityName
+import com.example.weatherapp.ui.theme.LocationUtility.getCountryCode
+
+
+import java.util.Locale
 
 
 // Define the font family
@@ -90,11 +97,12 @@ val AppTypography = Typography(
     )
 )
 
+
 @Composable
 fun HomeScreen(modifier: Modifier = Modifier) {
     var weatherData by remember { mutableStateOf<WeatherResponse?>(null) }
-    var weatherDataIzmir by remember { mutableStateOf<WeatherResponse?>(null)}
-    var weatherDataAnkara by remember { mutableStateOf<WeatherResponse?>(null)}
+    var weatherDataIzmir by remember { mutableStateOf<WeatherResponse?>(null) }
+    var weatherDataAnkara by remember { mutableStateOf<WeatherResponse?>(null) }
 
     var locationName by remember { mutableStateOf("Loading...") }
     val context = LocalContext.current
@@ -105,13 +113,17 @@ fun HomeScreen(modifier: Modifier = Modifier) {
             val location = LocationUtility.getCurrentLocation(context)
             if (location != null) {
                 // Use location for API call
-                val locationQuery = "${location.latitude},${location.longitude}"
+                val cityName = getCityName(context, location)
+                val countryCode = getCountryCode(context, location.latitude, location.longitude)
+                    .lowercase(Locale.ROOT)
+                val locationQuery = "$cityName,$countryCode"
                 weatherData = fetchWeatherData(locationQuery)
-                locationName = getCityName(context, location)
+                locationName = "$cityName, $countryCode"
             }
 
-            weatherDataIzmir=fetchWeatherData("Izmir,tr")
-            weatherDataAnkara=fetchWeatherData("Ankara,tr")
+            // Format location for specific cities
+            weatherDataIzmir = fetchWeatherData("Izmir,tr")
+            weatherDataAnkara = fetchWeatherData("Ankara,tr")
         } catch (e: Exception) {
             e.printStackTrace()
         }

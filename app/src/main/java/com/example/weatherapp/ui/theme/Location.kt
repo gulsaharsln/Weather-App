@@ -11,15 +11,34 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 
 
-fun getCityName(context: Context, location: Location): String {
-    val geocoder = Geocoder(context)
-    val addresses = geocoder.getFromLocation(location.latitude, location.longitude, 1)
-    return addresses?.get(0)?.locality ?: "Unknown Location"
-}
+
 
 
 object LocationUtility {
-
+    fun getCityName(context: Context, location: Location): String {
+        val geocoder = Geocoder(context)
+        try {
+            val addresses = geocoder.getFromLocation(location.latitude, location.longitude, 1)
+            if (addresses != null && addresses.isNotEmpty()) {
+                return addresses[0].locality ?: "Unknown City"
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        return "Unknown City"
+    }
+    fun getCountryCode(context: Context, latitude: Double, longitude: Double): String {
+        val geocoder = Geocoder(context)
+        try {
+            val addresses = geocoder.getFromLocation(latitude, longitude, 1)
+            if (addresses != null && addresses.isNotEmpty()) {
+                return addresses[0].countryCode ?: "Unknown Country"
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        return "Unknown Country"
+    }
     fun getCurrentLocation(context: Context): Location? {
         // Check if location permission is granted
         if (ContextCompat.checkSelfPermission(
