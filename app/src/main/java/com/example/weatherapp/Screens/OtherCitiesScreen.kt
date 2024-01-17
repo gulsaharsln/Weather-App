@@ -240,20 +240,10 @@ fun OtherCitiesScreen(modifier: Modifier = Modifier) {
                         )
                     )
             )
-            Image(
-                painter = painterResource(id = R.drawable.rainyweather),
-                contentDescription = "rainy-weather-4034172-3337336@0 1",
-                modifier = Modifier
-                    .align(alignment = Alignment.TopStart)
-                    .offset(
-                        x = 256.dp,
-                        y = 0.dp
-                    )
-                    .requiredSize(size = 146.dp)
-            )
+            CitiesImage(weatherData = weatherDataAnkara)
 
             Text(
-                text = "Mumbai",
+                text = "Ankara",
                 color = Color.White,
                 fontSize = 20.sp,
                 lineHeight = 0.6.em,
@@ -264,7 +254,7 @@ fun OtherCitiesScreen(modifier: Modifier = Modifier) {
 
 
             Text(
-                text = "Rainy",
+                text = "${weatherDataAnkara?.weather?.getOrNull(0)?.description ?: "N/A"}",
                 color = Color.White.copy(alpha = 0.7f),
                 fontSize = 14.sp,
                 lineHeight = 0.86.em,
@@ -304,21 +294,11 @@ fun OtherCitiesScreen(modifier: Modifier = Modifier) {
                         )
                     )
             )
-            Image(
-                painter = painterResource(id = R.drawable.rain),
-                contentDescription = "rain-3311753-2754887 1",
-                contentScale = ContentScale.Crop,
-                modifier = Modifier
-                    .align(alignment = Alignment.TopStart)
-                    .offset(
-                        x = 270.dp,
-                        y = 0.dp
-                    )
-                    .requiredSize(size = 117.dp)
-            )
+
+            CitiesImage(weatherData = weatherDataEskişehir)
 
             Text(
-                text = "Chennai",
+                text = "Eskişehir",
                 color = Color.White,
                 fontSize = 20.sp,
                 lineHeight = 0.6.em,
@@ -329,7 +309,7 @@ fun OtherCitiesScreen(modifier: Modifier = Modifier) {
 
 
             Text(
-                text = "Cold",
+                text = "${weatherDataEskişehir?.weather?.getOrNull(0)?.description ?: "N/A"}",
                 color = Color.White.copy(alpha = 0.7f),
                 fontSize = 14.sp,
                 lineHeight = 0.86.em,
@@ -369,20 +349,11 @@ fun OtherCitiesScreen(modifier: Modifier = Modifier) {
                         )
                     )
             )
-            Image(
-                painter = painterResource(id = R.drawable.rainyweather),
-                contentDescription = "rainy-weather-4034172-3337336@0 3",
-                modifier = Modifier
-                    .align(alignment = Alignment.TopStart)
-                    .offset(
-                        x = 260.dp,
-                        y = 0.dp
-                    )
-                    .requiredSize(size = 138.dp)
-            )
+
+            CitiesImage(weatherData = weatherDataBursa)
 
             Text(
-                text = "Manali",
+                text = "Bursa",
                 color = Color.White,
                 fontSize = 20.sp,
                 lineHeight = 0.6.em,
@@ -393,7 +364,7 @@ fun OtherCitiesScreen(modifier: Modifier = Modifier) {
 
 
             Text(
-                text = "Snowy",
+                text = "${weatherDataBursa?.weather?.getOrNull(0)?.description ?: "N/A"}",
                 color = Color.White.copy(alpha = 0.7f),
                 fontSize = 14.sp,
                 lineHeight = 0.86.em,
