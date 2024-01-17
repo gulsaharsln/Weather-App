@@ -184,18 +184,12 @@ fun HomeScreen(navController: NavController, modifier: Modifier = Modifier)  {
                 .requiredWidth(width = 488.dp)
                 .requiredHeight(height = 78.dp)
         ) {
-            Button(
-                onClick = { navController.navigate("otherCitiesScreen") },
+            Box(
                 modifier = Modifier
                     .align(alignment = Alignment.TopStart)
-                    .offset(x = 3.dp, y = -25.dp)
-                    .background(brush = Brush.linearGradient(
-                        0f to Color(0xff352163),
-                        0.58f to Color(0xff331972),
-                        1f to Color(0xff33143c),
-                        start = Offset(208.5f, 0f),
-                        end = Offset(208.5f, 872f)))
-            ) {
+                    .offset(x = 3.dp, y = 5.dp)
+            )
+            {
                 Text(
                     text = "Other Cities",
                     color = Color.White,
@@ -212,6 +206,8 @@ fun HomeScreen(navController: NavController, modifier: Modifier = Modifier)  {
                     .requiredWidth(width = 156.dp)
                     .requiredHeight(height = 50.dp)
             ) {
+
+
                 Box(
                     modifier = Modifier
                         .requiredWidth(width = 190.dp)
@@ -266,6 +262,35 @@ fun HomeScreen(navController: NavController, modifier: Modifier = Modifier)  {
                     .requiredWidth(width = 156.dp)
                     .requiredHeight(height = 50.dp)
             ) {
+                Box(
+                    modifier = Modifier
+                        .requiredWidth(width = 150.dp)
+                        .requiredHeight(height = 36.dp)
+                        .offset(x = (-100).dp,
+                            y = 70.dp)
+                        .clip(shape = RoundedCornerShape(10.dp))
+                        .background(
+                            brush = Brush.linearGradient(
+                                0f to Color(0xff957dcd),
+                                1f to Color(0xff523d7f),
+                                start = Offset(78f, 0f),
+                                end = Offset(78f, 50f)
+                            )
+                        )
+                        .clickable {
+                            navController.navigate("otherCitiesScreen")
+                        }
+                ) {
+                    Text(
+                        text = "More Cities",
+                        color = Color.White,
+                        style = AppTypography.caption,
+                        lineHeight = 1.5.em,
+                        modifier = Modifier.align(Alignment.Center)
+                    )
+                }
+
+
                 Box(
                     modifier = Modifier
                         .requiredWidth(width = 196.dp)
@@ -459,7 +484,7 @@ fun HomeScreen(navController: NavController, modifier: Modifier = Modifier)  {
         }
 
     }
-        }
+}
 
 @Preview(widthDp = 417, heightDp = 872)
 @Composable
@@ -477,9 +502,9 @@ fun BigWeatherImage(weatherData: WeatherResponse?) {
             contentDescription = description,
             contentScale = ContentScale.Fit,
             modifier = Modifier
-                .requiredWidth(width = 182.dp)
-                .requiredHeight(height = 170.dp)
-                .offset(x = 50.dp, y = 0.dp)
+                .requiredWidth(width = 192.dp)
+                .requiredHeight(height = 159.dp)
+                .offset(x = 55.dp, y = 0.dp)
 
         )
     }

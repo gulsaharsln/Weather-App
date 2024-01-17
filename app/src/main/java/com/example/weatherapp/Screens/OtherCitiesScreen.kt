@@ -349,7 +349,7 @@ fun OtherCitiesScreen(navController: NavHostController, modifier: Modifier = Mod
                 .align(alignment = Alignment.TopStart)
                 .offset(
                     x = 15.dp,
-                    y = 607.dp
+                    y = 627.dp
                 )
                 .requiredWidth(width = 398.dp)
                 .requiredHeight(height = 138.dp)
