@@ -97,4 +97,5 @@ dependencies {
     implementation ("androidx.compose.material:material:1.2.0")
     implementation ("com.google.code.gson:gson:2.8.8")
     implementation ("androidx.compose.runtime:runtime-livedata:1.1.1")
+    implementation ("androidx.navigation:navigation-compose:2.4.0-beta01")
 }

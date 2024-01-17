@@ -1,15 +1,11 @@
 package com.example.weatherapp.Screens
 
-import android.content.Context
-import android.location.Geocoder
-import android.location.Location
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Button
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -42,62 +38,16 @@ import androidx.compose.material.Typography
 import androidx.compose.ui.text.font.Font
 import com.example.weatherapp.getWeatherIconResource
 import androidx.compose.ui.platform.LocalContext
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import com.example.weatherapp.AppTypography
 import com.example.weatherapp.LocationUtility
 import com.example.weatherapp.LocationUtility.getCityName
 import com.example.weatherapp.LocationUtility.getCountryCode
 import java.util.Locale
 
-
-// Define the font family
-val OpenSansFamily = FontFamily(Font(R.font.opensans_regular))
-
-// Define the typography
-val AppTypography = Typography(
-    h1 = TextStyle(
-        fontFamily = OpenSansFamily,
-        fontWeight = FontWeight.Medium,
-        fontSize = 50.sp
-    ),
-
-    h2 = TextStyle(
-        fontFamily = OpenSansFamily,
-        fontWeight = FontWeight.Bold,
-        fontSize = 28.sp
-    ),
-
-    h3 = TextStyle(
-        fontFamily = OpenSansFamily,
-        fontWeight = FontWeight.Normal,
-        fontSize = 14.sp
-    ),
-
-    h4 = TextStyle(
-        fontFamily = OpenSansFamily,
-        fontWeight = FontWeight.Normal,
-        fontSize = 16.sp
-    ),
-
-    h5 = TextStyle(
-        fontFamily = OpenSansFamily,
-        fontWeight = FontWeight.Normal,
-        fontSize = 10.sp
-    ),
-    h6 = TextStyle(
-        fontFamily = OpenSansFamily,
-        fontWeight = FontWeight.Normal,
-        fontSize = 12.sp
-    ),
-
-    caption = TextStyle(
-        fontFamily = OpenSansFamily,
-        fontWeight = FontWeight.Medium,
-        fontSize = 12.sp
-    )
-)
-
-
 @Composable
-fun HomeScreen(modifier: Modifier = Modifier) {
+fun HomeScreen(navController: NavController, modifier: Modifier = Modifier)  {
     var weatherData by remember { mutableStateOf<WeatherResponse?>(null) }
     var weatherDataIzmir by remember { mutableStateOf<WeatherResponse?>(null) }
     var weatherDataAnkara by remember { mutableStateOf<WeatherResponse?>(null) }
@@ -234,15 +184,25 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                 .requiredWidth(width = 488.dp)
                 .requiredHeight(height = 78.dp)
         ) {
-            Text(
-                text = "Other Cities",
-                color = Color(0xffdedddd),
-                style = AppTypography.caption,
-                lineHeight = 1.5.em,
+            Button(
+                onClick = { navController.navigate("otherCitiesScreen") },
                 modifier = Modifier
                     .align(alignment = Alignment.TopStart)
-                    .offset(x = 3.dp, y = 0.0479736328125.dp)
-            )
+                    .offset(x = 3.dp, y = -25.dp)
+                    .background(brush = Brush.linearGradient(
+                        0f to Color(0xff352163),
+                        0.58f to Color(0xff331972),
+                        1f to Color(0xff33143c),
+                        start = Offset(208.5f, 0f),
+                        end = Offset(208.5f, 872f)))
+            ) {
+                Text(
+                    text = "Other Cities",
+                    color = Color.White,
+                    style = AppTypography.caption,
+                    lineHeight = 1.5.em
+                )
+            }
 
             Box(
                 modifier = Modifier
@@ -504,14 +464,8 @@ fun HomeScreen(modifier: Modifier = Modifier) {
 @Preview(widthDp = 417, heightDp = 872)
 @Composable
 private fun HomeScreenPreview() {
-    HomeScreen(Modifier)
-}
-
-@Composable
-fun SafeAreaBox(content: @Composable () -> Unit) {
-    Box(modifier = Modifier.padding(top = 20.dp)) {
-        content()
-    }
+    val navController = rememberNavController()
+    HomeScreen(navController = navController, modifier = Modifier)
 }
 
 @Composable
