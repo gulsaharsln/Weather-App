@@ -2,6 +2,7 @@ package com.example.weatherapp.Screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.requiredHeight
@@ -38,9 +39,11 @@ import com.example.weatherapp.WeatherResponse
 import com.example.weatherapp.fetchWeatherData
 import com.example.weatherapp.getWeatherIconResource
 import java.util.Locale
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 
 @Composable
-fun OtherCitiesScreen(modifier: Modifier = Modifier) {
+fun OtherCitiesScreen(navController: NavHostController, modifier: Modifier = Modifier) {
     var weatherDataIzmir by remember { mutableStateOf<WeatherResponse?>(null) }
     var weatherDataAnkara by remember { mutableStateOf<WeatherResponse?>(null) }
     var weatherDataEskişehir by remember { mutableStateOf<WeatherResponse?>(null) }
@@ -143,6 +146,9 @@ fun OtherCitiesScreen(modifier: Modifier = Modifier) {
                         )
                         .clip(shape = RoundedCornerShape(5.dp))
                         .background(color = Color.White.copy(alpha = 0.3f))
+                        .clickable {
+                            navController.navigate("homeScreen")
+                        }
                 )
             }
         }
@@ -429,10 +435,3 @@ fun CitiesImage(weatherData: WeatherResponse?) {
     }
 }
 
-
-
-@Preview(showBackground = true)
-@Composable
-fun OtherCitiesPreview() {
-    OtherCitiesScreen()
-}

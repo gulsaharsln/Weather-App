@@ -10,7 +10,7 @@ fun AppNavGraph() {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = "homeScreen") {
         composable("homeScreen") { HomeScreen(navController = navController) }
-        composable("otherCitiesScreen") { OtherCitiesScreen() }
+        composable("otherCitiesScreen") { OtherCitiesScreen(navController = navController) }
     }
 }
 
