@@ -42,6 +42,7 @@ import com.example.weatherapp.getWeatherIconResource
 import java.util.Locale
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
+import com.example.weatherapp.AppTypography
 
 @Composable
 fun OtherCitiesScreen(navController: NavHostController, modifier: Modifier = Modifier) {
@@ -156,7 +157,7 @@ fun OtherCitiesScreen(navController: NavHostController, modifier: Modifier = Mod
         Text(
             text = "Other Cities",
             color = Color.White,
-            fontSize = 18.sp,
+            style = AppTypography.h7,
             lineHeight = 0.67.em,
             modifier = Modifier
                 .align(alignment = Alignment.TopStart)
@@ -198,7 +199,7 @@ fun OtherCitiesScreen(navController: NavHostController, modifier: Modifier = Mod
             Text(
                 text = "İzmir",
                 color = Color.White,
-                fontSize = 20.sp,
+                style = AppTypography.h8,
                 lineHeight = 0.6.em,
                 modifier = Modifier
                     .align(alignment = Alignment.TopStart)
@@ -209,9 +210,8 @@ fun OtherCitiesScreen(navController: NavHostController, modifier: Modifier = Mod
             Text(
                 text = "${weatherDataIzmir?.weather?.getOrNull(0)?.description ?: "N/A"}",
                 color = Color.White.copy(alpha = 0.7f),
-                fontSize = 14.sp,
+                style = AppTypography.h9,
                 lineHeight = 0.86.em,
-                fontWeight = FontWeight.Medium,
                 modifier = Modifier
                     .align(alignment = Alignment.TopStart)
                     .offset(x = 34.dp, y = 71.dp)
@@ -252,7 +252,7 @@ fun OtherCitiesScreen(navController: NavHostController, modifier: Modifier = Mod
             Text(
                 text = "Ankara",
                 color = Color.White,
-                fontSize = 20.sp,
+                style = AppTypography.h8,
                 lineHeight = 0.6.em,
                 modifier = Modifier
                     .align(alignment = Alignment.TopStart)
@@ -263,9 +263,8 @@ fun OtherCitiesScreen(navController: NavHostController, modifier: Modifier = Mod
             Text(
                 text = "${weatherDataAnkara?.weather?.getOrNull(0)?.description ?: "N/A"}",
                 color = Color.White.copy(alpha = 0.7f),
-                fontSize = 14.sp,
+                style = AppTypography.h9,
                 lineHeight = 0.86.em,
-                fontWeight = FontWeight.Medium,
                 modifier = Modifier
                     .align(alignment = Alignment.TopStart)
                     .offset(x = 32.dp, y = 80.dp)
@@ -307,7 +306,7 @@ fun OtherCitiesScreen(navController: NavHostController, modifier: Modifier = Mod
             Text(
                 text = "Eskişehir",
                 color = Color.White,
-                fontSize = 20.sp,
+                style = AppTypography.h8,
                 lineHeight = 0.6.em,
                 modifier = Modifier
                     .align(alignment = Alignment.TopStart)
@@ -318,9 +317,8 @@ fun OtherCitiesScreen(navController: NavHostController, modifier: Modifier = Mod
             Text(
                 text = "${weatherDataEskişehir?.weather?.getOrNull(0)?.description ?: "N/A"}",
                 color = Color.White.copy(alpha = 0.7f),
-                fontSize = 14.sp,
+                style = AppTypography.h9,
                 lineHeight = 0.86.em,
-                fontWeight = FontWeight.Medium,
                 modifier = Modifier
                     .align(alignment = Alignment.TopStart)
                     .offset(x = 32.dp, y = 68.dp)
@@ -362,7 +360,7 @@ fun OtherCitiesScreen(navController: NavHostController, modifier: Modifier = Mod
             Text(
                 text = "Bursa",
                 color = Color.White,
-                fontSize = 20.sp,
+                style = AppTypography.h8,
                 lineHeight = 0.6.em,
                 modifier = Modifier
                     .align(alignment = Alignment.TopStart)
@@ -373,9 +371,8 @@ fun OtherCitiesScreen(navController: NavHostController, modifier: Modifier = Mod
             Text(
                 text = "${weatherDataBursa?.weather?.getOrNull(0)?.description ?: "N/A"}",
                 color = Color.White.copy(alpha = 0.7f),
-                fontSize = 14.sp,
+                style = AppTypography.h9,
                 lineHeight = 0.86.em,
-                fontWeight = FontWeight.Medium,
                 modifier = Modifier
                     .align(alignment = Alignment.TopStart)
                     .offset(x = 32.dp, y = 75.dp)
