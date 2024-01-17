@@ -76,14 +76,16 @@ suspend fun fetchWeatherData(location: String ): WeatherResponse {
 fun getWeatherIconResource(description: String): Int {
     return when (description.toLowerCase()) {
         "clear sky"  -> R.drawable.sunny
-        "few clouds", "scattered clouds", "broken clouds", "overcast clouds", -> R.drawable.cloudy
-        "shower rain", "light rain", "moderate rain", "heavy intensity rain", "very heavy rain", "extreme rain",
-        "freezing rain", "light intensity shower rain", "shower rain", "heavy intensity shower rain", "ragged shower rain"-> R.drawable.rain
+        "few clouds", "scattered clouds", "broken clouds" -> R.drawable.partial_cloud
+        "overcast clouds", -> R.drawable.cloudy
+        "shower rain", "light rain", "moderate rain", "heavy intensity rain", "very heavy rain", "extreme rain" -> R.drawable.rain
+        "freezing rain", "light intensity shower rain", "shower rain", "heavy intensity shower rain", "ragged shower rain"-> R.drawable.shower_rain
         "light snow", "snow", "heavy snow", "sleet", "light shower sleet", "shower sleet", "light rain and snow", "rain and snow",
         "light shower snow", "shower snow", "heavy shower snow"  -> R.drawable.snow
         "thunderstorm with light rain", "thunderstorm with rain", "thunderstorm with heavy rain", "light thunderstorm",
         "thunderstorm", "heavy thunderstorm", "ragged thunderstorm", "thunderstorm with light drizzle", "thunderstorm with drizzle",
         "thunderstorm with heavy drizzle"  -> R.drawable.thunder
+        "mist", "smoke", "haze", "sand/ dust whirls", "fog", "sand", "dust", "volcanic ash", "squalls", "tornado" -> R.drawable.mist
         else -> R.drawable.cloudy
     }
 }
