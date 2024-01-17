@@ -475,10 +475,10 @@ fun BigWeatherImage(weatherData: WeatherResponse?) {
         Image(
             painter = painterResource(id = imageRes),
             contentDescription = description,
-            contentScale = ContentScale.Crop,
+            contentScale = ContentScale.Fit,
             modifier = Modifier
-                .requiredWidth(width = 172.dp)
-                .requiredHeight(height = 139.dp)
+                .requiredWidth(width = 182.dp)
+                .requiredHeight(height = 170.dp)
                 .offset(x = 50.dp, y = 0.dp)
 
         )

@@ -28,19 +28,12 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
-import androidx.compose.ui.unit.sp
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.weatherapp.LocationUtility
 import com.example.weatherapp.R
 import com.example.weatherapp.WeatherResponse
 import com.example.weatherapp.fetchWeatherData
 import com.example.weatherapp.getWeatherIconResource
-import java.util.Locale
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import com.example.weatherapp.AppTypography
 
@@ -157,7 +150,7 @@ fun OtherCitiesScreen(navController: NavHostController, modifier: Modifier = Mod
         Text(
             text = "Other Cities",
             color = Color.White,
-            style = AppTypography.h7,
+            style = AppTypography.h8,
             lineHeight = 0.67.em,
             modifier = Modifier
                 .align(alignment = Alignment.TopStart)
@@ -169,7 +162,7 @@ fun OtherCitiesScreen(navController: NavHostController, modifier: Modifier = Mod
                 .align(alignment = Alignment.TopStart)
                 .offset(
                     x = 15.dp,
-                    y = 197.dp
+                    y = 175.dp
                 )
                 .requiredWidth(width = 394.dp)
                 .requiredHeight(height = 114.dp)
@@ -179,7 +172,7 @@ fun OtherCitiesScreen(navController: NavHostController, modifier: Modifier = Mod
                     .align(alignment = Alignment.TopStart)
                     .offset(
                         x = 0.dp,
-                        y = 17.dp
+                        y = 20.dp
                     )
                     .requiredWidth(width = 321.dp)
                     .requiredHeight(height = 90.dp)
@@ -203,9 +196,17 @@ fun OtherCitiesScreen(navController: NavHostController, modifier: Modifier = Mod
                 lineHeight = 0.6.em,
                 modifier = Modifier
                     .align(alignment = Alignment.TopStart)
-                    .offset(x = 34.dp, y = 46.dp)
+                    .offset(x = 20.dp, y = 30.dp)
             )
 
+            Text(
+                text = "${weatherDataIzmir?.main?.temp ?: "N/A"}°",
+                color = Color.White,
+                style = AppTypography.h10,
+                modifier = Modifier
+                    .align(Alignment.TopStart)
+                    .offset(x = 20.dp, y = 60.dp)
+            )
 
             Text(
                 text = "${weatherDataIzmir?.weather?.getOrNull(0)?.description ?: "N/A"}",
@@ -214,7 +215,7 @@ fun OtherCitiesScreen(navController: NavHostController, modifier: Modifier = Mod
                 lineHeight = 0.86.em,
                 modifier = Modifier
                     .align(alignment = Alignment.TopStart)
-                    .offset(x = 34.dp, y = 71.dp)
+                    .offset(x = 20.dp, y = 85.dp)
             )
 
         }
@@ -233,7 +234,7 @@ fun OtherCitiesScreen(navController: NavHostController, modifier: Modifier = Mod
                     .align(alignment = Alignment.TopStart)
                     .offset(
                         x = 0.dp,
-                        y = 26.dp
+                        y = 20.dp
                     )
                     .requiredWidth(width = 321.dp)
                     .requiredHeight(height = 90.dp)
@@ -256,7 +257,16 @@ fun OtherCitiesScreen(navController: NavHostController, modifier: Modifier = Mod
                 lineHeight = 0.6.em,
                 modifier = Modifier
                     .align(alignment = Alignment.TopStart)
-                    .offset(x = 32.dp, y = 55.dp)
+                    .offset(x = 20.dp, y = 30.dp)
+            )
+
+            Text(
+                text = "${weatherDataAnkara?.main?.temp ?: "N/A"}°",
+                color = Color.White,
+                style = AppTypography.h10,
+                modifier = Modifier
+                    .align(Alignment.TopStart)
+                    .offset(x = 20.dp, y = 60.dp)
             )
 
 
@@ -267,7 +277,7 @@ fun OtherCitiesScreen(navController: NavHostController, modifier: Modifier = Mod
                 lineHeight = 0.86.em,
                 modifier = Modifier
                     .align(alignment = Alignment.TopStart)
-                    .offset(x = 32.dp, y = 80.dp)
+                    .offset(x = 20.dp, y = 85.dp)
             )
 
         }
@@ -286,7 +296,7 @@ fun OtherCitiesScreen(navController: NavHostController, modifier: Modifier = Mod
                     .align(alignment = Alignment.TopStart)
                     .offset(
                         x = 0.dp,
-                        y = 14.dp
+                        y = 20.dp
                     )
                     .requiredWidth(width = 321.dp)
                     .requiredHeight(height = 90.dp)
@@ -310,7 +320,16 @@ fun OtherCitiesScreen(navController: NavHostController, modifier: Modifier = Mod
                 lineHeight = 0.6.em,
                 modifier = Modifier
                     .align(alignment = Alignment.TopStart)
-                    .offset(x = 32.dp, y = 43.dp)
+                    .offset(x =20.dp, y = 30.dp)
+            )
+
+            Text(
+                text = "${weatherDataEskişehir?.main?.temp ?: "N/A"}°",
+                color = Color.White,
+                style = AppTypography.h10,
+                modifier = Modifier
+                    .align(Alignment.TopStart)
+                    .offset(x = 20.dp, y = 60.dp)
             )
 
 
@@ -321,7 +340,7 @@ fun OtherCitiesScreen(navController: NavHostController, modifier: Modifier = Mod
                 lineHeight = 0.86.em,
                 modifier = Modifier
                     .align(alignment = Alignment.TopStart)
-                    .offset(x = 32.dp, y = 68.dp)
+                    .offset(x = 20.dp, y = 85.dp)
             )
 
         }
@@ -340,7 +359,7 @@ fun OtherCitiesScreen(navController: NavHostController, modifier: Modifier = Mod
                     .align(alignment = Alignment.TopStart)
                     .offset(
                         x = 0.dp,
-                        y = 21.dp
+                        y = 20.dp
                     )
                     .requiredWidth(width = 321.dp)
                     .requiredHeight(height = 90.dp)
@@ -364,7 +383,16 @@ fun OtherCitiesScreen(navController: NavHostController, modifier: Modifier = Mod
                 lineHeight = 0.6.em,
                 modifier = Modifier
                     .align(alignment = Alignment.TopStart)
-                    .offset(x = 32.dp, y = 50.dp)
+                    .offset(x = 20.dp, y = 30.dp)
+            )
+
+            Text(
+                text = "${weatherDataBursa?.main?.temp ?: "N/A"}°",
+                color = Color.White,
+                style = AppTypography.h10,
+                modifier = Modifier
+                    .align(Alignment.TopStart)
+                    .offset(x = 20.dp, y = 60.dp)
             )
 
 
@@ -375,7 +403,7 @@ fun OtherCitiesScreen(navController: NavHostController, modifier: Modifier = Mod
                 lineHeight = 0.86.em,
                 modifier = Modifier
                     .align(alignment = Alignment.TopStart)
-                    .offset(x = 32.dp, y = 75.dp)
+                    .offset(x = 20.dp, y = 85.dp)
             )
 
         }
@@ -424,10 +452,10 @@ fun CitiesImage(weatherData: WeatherResponse?) {
         Image(
             painter = painterResource(id = imageRes),
             contentDescription = description,
-            contentScale = ContentScale.Crop,
+            contentScale = ContentScale.Fit,
             modifier = Modifier
-                .requiredWidth(width = 146.dp)
-                .requiredHeight(height = 114.dp)
+                .requiredWidth(width = 160.dp)
+                .requiredHeight(height = 130.dp)
                 .offset(x = 249.dp, y = 0.dp)
         )
     }

@@ -57,15 +57,22 @@ class AppTypography {
 
         val h8 = TextStyle(
             fontFamily = FontFamily(Font(R.font.opensans_regular)),
-            fontWeight = FontWeight.Normal,
+            fontWeight = FontWeight.Bold,
             fontSize = 20.sp
         )
+
         val h9 = TextStyle(
             fontFamily = FontFamily(Font(R.font.opensans_regular)),
             fontWeight = FontWeight.Medium,
             fontSize = 14.sp
         )
 
+
+        val h10 = TextStyle(
+            fontFamily = FontFamily(Font(R.font.opensans_regular)),
+            fontWeight = FontWeight.Bold,
+            fontSize = 18.sp
+        )
 
 
         val caption = TextStyle(
